@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import store from './store'
 
 import StaffTable from './components/StaffTable'
+import StaffCards from './components/StaffCards'
 import FormStackSelect from './components/FormStackSelect'
 
 import fetchMixin from '@/mixins/fetch'
@@ -17,5 +18,5 @@ new Vue({
   el: '#prs-mrs',
   store,
   mixins: [fetchMixin],
-  components: { StaffTable, FormStackSelect }
+  components: { StaffTable, StaffCards, FormStackSelect }
 })

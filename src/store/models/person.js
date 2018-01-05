@@ -7,6 +7,8 @@ export default class Person {
     this.officephone = obj.gsx$officephone.$t
     this.voip = obj.gsx$voip.$t
     this.cellphone = obj.gsx$cellphone.$t
+    this.ooo = obj.gsx$ooo.$t
+    this.oooBackup = obj.gsx$ooobackup.$t
   }
 
   static get url () {
