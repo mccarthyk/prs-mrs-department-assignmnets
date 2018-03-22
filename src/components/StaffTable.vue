@@ -43,15 +43,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import fetchMixin from '../mixins/fetch'
 
 export default {
   name: 'StaffTable',
-  computed: {
-    ...mapState({
-      staff: state => state.staff
-    }),
-    ...mapGetters(['departmentsOf'])
+  mixins: [fetchMixin],
+  mounted () {
+    this.fetchStaff()
+    this.fetchDepartments()
   }
 }
 </script>

@@ -2,37 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-    PRS/MRS Department Assignments
-  </title>
-
+  <title>prs-mrs-department-assignmnets</title>
   <link rel="stylesheet" href="https://commbocc.github.io/html-wrapper/static/css/app.css">
 </head>
 <body>
-  <div id="prs-mrs" class="container my-5">
-
-    <h3>FormStack Select</h3>
-
-    <div is="FormStackSelect"
-    department-input-id="fsdi"
-    prs-email-input-id="fspei"
-    mrs-email-input-id="fsmei"></div>
-
-    <div class="card card-body bg-dark">
-      <input id="fsdi" readonly class="form-control form-control-sm">
-      <input id="fspei" readonly class="form-control form-control-sm">
-      <input id="fsmei" readonly class="form-control form-control-sm">
-    </div>
-
-    <hr class="my-5">
-
-    <h3>Table</h3>
-
-    <table is="StaffTable"></table>
-
-  </div>
-
-  <!-- built files will be auto injected -->
+  <div id="app"></div>
+  <script src="/dist/build.js"></script>
 </body>
 </html>
