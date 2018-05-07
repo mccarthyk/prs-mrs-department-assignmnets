@@ -10,70 +10,48 @@ The data for this project is stored in a published Google Sheet: [PRS/MRS Depart
 
 ### CDN (Browser)
 
-#### Table
-
 ```html
-<div id="app">
-  <table is="HcCommPrsMrsTable"></table>
-</div>
-
 <!-- include babel-polyfill for IE11 Promise support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <!-- include polyfill for IE11 fetch support -->
 <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
 <!-- include vue -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
-<script src="https://commbocc.github.io/prs-mrs-department-assignmnets/dist/table.var.js"></script>
+<!-- sets HcPrsMrsDepts as a variable -->
+<script src="https://commbocc.github.io/prs-mrs-department-assignmnets/dist/build.js"></script>
+```
+
+#### Table
+
+```html
+<div id="StaffTable"></div>
+
 <script type="text/javascript">
-var app = new Vue({
-  el: '#app',
-  components: { HcCommPrsMrsTable: HcCommPrsMrsTable }
-})
+var StaffTable = Vue.extend(HcPrsMrsDepts.StaffTable)
+var staffTable = new StaffTable({propsData: {
+  showVoip: false,
+  filter: null // 'PRS' or 'MRS'
+}}).$mount('#StaffTable')
 </script>
 ```
 
-* Optionally pass classes to the table with `<table is="StaffTable" class="table table-striped"></table>`. The `.table` & `.table-striped` classes are applied by default.
-
 #### Dropdown Select (FormStack)
 
-[Demo](https://hcflgov.formstack.com/forms/section_maker)
-
 ```html
-<div id="app">
-  <div is="HcCommPrsMrsSelect"
-  department-input-id="field59760408"
-  prs-email-input-id="field59760500"
-  mrs-email-input-id="field59760501"
-  select-class="form-control"></div>
-</div>
-
+<div id="SelectField"></div>
 <!-- <input id="field59760408" type="hidden"> -->
 <!-- <input id="field59760500" type="hidden"> -->
 <!-- <input id="field59760501" type="hidden"> -->
 
-<!-- include babel-polyfill for IE11 Promise support -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
-<!-- include polyfill for IE11 fetch support -->
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!-- include vue -->
-<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
-<script src="https://commbocc.github.io/prs-mrs-department-assignmnets/dist/select.var.js"></script>
 <script type="text/javascript">
-var app = new Vue({
-  el: '#app',
-  components: { HcCommPrsMrsSelect: HcCommPrsMrsSelect }
-})
+var SelectField = Vue.extend(HcPrsMrsDepts.SelectField)
+var selectField = new SelectField({propsData: {
+  departmentInputId: 'field59760408',
+  prsEmailInputId: 'field59760500',
+  mrsEmailInputId: 'field59760501'
+}}).$mount('#SelectField')
 </script>
 ```
-
-The following properties can be passed to the component:
-
-* `department-input-id=""` The DOM id of the FormStack input field to which the _department name_ will be inserted.
-* `prs-email-input-id=""` The DOM id of the FormStack input field to which the _PRS' email_ will be inserted.
-* `mrs-email-input-id=""` The DOM id of the FormStack input field to which the _MRS' email_ will be inserted.
-* `select-class=""` The class applied to the `<select>` element. Defaults to `form-control`.
-* `label="Department"` The label of the select element. Defaults to `Department`.
-* `:required="true"` Show or hide the `*` after the label. This property accepts a boolean data type, notice the `:` before the property which designates a [dynamic property](https://vuejs.org/v2/guide/components.html#Dynamic-Props). Defaults to `true`.
 
 ### NPM
 

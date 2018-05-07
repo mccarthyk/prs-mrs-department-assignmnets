@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'build.js',
-    libraryTarget: 'commonjs2'
+    library: 'HcPrsMrsDepts'
   },
   module: {
     rules: [

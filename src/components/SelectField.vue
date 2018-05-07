@@ -25,10 +25,6 @@ export default {
     }
   },
   mixins: [fetchMixin],
-  mounted () {
-    this.fetchStaff()
-    this.fetchDepartments()
-  },
   methods: {
     detectSelection (e) {
       var department = (this.selected) ? this.selected : null

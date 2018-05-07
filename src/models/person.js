@@ -1,15 +1,14 @@
-export default class Person {
+import Gsheet from './gsheet'
+
+export default class Person extends Gsheet {
   constructor (obj) {
+    super()
     this.name = obj.gsx$fullname.$t
     this.position = obj.gsx$position.$t
-    this.note = obj.gsx$note.$t
+    this.filter = obj.gsx$filter.$t
     this.email = obj.gsx$email.$t
     this.officephone = obj.gsx$officephone.$t
     this.voip = obj.gsx$voip.$t
     this.cellphone = obj.gsx$cellphone.$t
-  }
-
-  static get url () {
-    return 'https://spreadsheets.google.com/feeds/list/1vditFfu7pnz0H2RJISkwEsyzyR6dErCPdea1jUu6YHk/1/public/values?alt=json'
   }
 }

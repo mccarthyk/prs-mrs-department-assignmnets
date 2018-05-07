@@ -10,12 +10,12 @@ export default {
   },
   methods: {
     fetchStaff () {
-      return fetch(Person.url).then(res => res.json()).then(data => {
+      return fetch(Person.url(1)).then(res => res.json()).then(data => {
         this.staff = data.feed.entry.map(x => new Person(x))
       })
     },
     fetchDepartments () {
-      return fetch(Department.url).then(res => res.json()).then(data => {
+      return fetch(Department.url(2)).then(res => res.json()).then(data => {
         this.departments = data.feed.entry.map(x => new Department(x))
       })
     },
@@ -26,8 +26,11 @@ export default {
       return this.staff.find(x => x.name === department.mrsName)
     },
     departmentsOf (person) {
-      var positionStr = (person.position === 'PRS') ? 'prsName' : 'mrsName'
-      return this.departments.filter(x => x[positionStr] === person.name)
+      return this.departments.filter(x => x.prsName === person.name || x.mrsName === person.name)
     }
+  },
+  mounted () {
+    this.fetchStaff()
+    this.fetchDepartments()
   }
 }

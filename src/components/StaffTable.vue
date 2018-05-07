@@ -10,14 +10,14 @@
     </thead>
 
     <tbody v-if="staff">
-      <tr v-for="person in staff">
+      <tr v-for="person in filteredStaff">
 
         <td>
           {{ person.name }}
         </td>
 
         <td>
-          {{ person.note }} {{ person.position }}
+          {{ person.position }}
 
           {{ person.departments }}
 
@@ -31,7 +31,13 @@
         <td>
           <ul class="list-unstyled">
             <li><a :href="`mailto:${person.email}`">Email</a></li>
-            <li>{{ person.officephone }} - {{ person.voip }}</li>
+            <li>
+              {{ person.officephone }}
+              <span v-if="showVoip">
+                <!-- voip -->
+                - {{ person.voip }}
+              </span>
+            </li>
             <li>{{ person.cellphone }}</li>
           </ul>
         </td>
@@ -48,9 +54,20 @@ import fetchMixin from '../mixins/fetch'
 export default {
   name: 'StaffTable',
   mixins: [fetchMixin],
-  mounted () {
-    this.fetchStaff()
-    this.fetchDepartments()
+  props: {
+    filter: {
+      type: String,
+      default: null
+    },
+    showVoip: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    filteredStaff () {
+      return (this.filter) ? this.staff.filter(x => x.filter == this.filter || !x.filter) : this.staff
+    }
   }
 }
 </script>
