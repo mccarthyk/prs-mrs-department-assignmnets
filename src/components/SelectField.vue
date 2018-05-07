@@ -30,9 +30,15 @@ export default {
       var department = (this.selected) ? this.selected : null
       var prs = (this.selected) ? this.prsOf(this.selected) : null
       var mrs = (this.selected) ? this.mrsOf(this.selected) : null
-      document.getElementById(this.departmentInputId).value = (department) ? department.name : null
-      document.getElementById(this.prsEmailInputId).value = (prs) ? prs.email : null
-      document.getElementById(this.mrsEmailInputId).value = (mrs) ? mrs.email : null
+      if (this.departmentInputId) {
+        document.getElementById(this.departmentInputId).value = (department) ? department.name : null
+      }
+      if (this.prsEmailInputId) {
+        document.getElementById(this.prsEmailInputId).value = (prs) ? prs.email : null
+      }
+      if (this.mrsEmailInputId) {
+        document.getElementById(this.mrsEmailInputId).value = (mrs) ? mrs.email : null
+      }
     }
   },
   props: {
