@@ -15,8 +15,6 @@ The data for this project is stored in a published Google Sheet: [PRS/MRS Depart
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <!-- include polyfill for IE11 fetch support -->
 <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!-- include vue -->
-<script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
 <!-- sets HcPrsMrsDepts as a variable -->
 <script src="https://commbocc.github.io/prs-mrs-department-assignmnets/dist/build.js"></script>
 ```
@@ -27,10 +25,9 @@ The data for this project is stored in a published Google Sheet: [PRS/MRS Depart
 <div id="StaffTable"></div>
 
 <script type="text/javascript">
-var StaffTable = Vue.extend(HcPrsMrsDepts.StaffTable)
-var staffTable = new StaffTable({propsData: {
+var staffTable = new HcPrsMrsDepts.StaffTable({propsData: {
   showVoip: false,
-  filter: null // 'PRS' or 'MRS'
+  filter: null // 'PRS', 'MRS', or 'Manager'
 }}).$mount('#StaffTable')
 </script>
 ```
@@ -44,8 +41,7 @@ var staffTable = new StaffTable({propsData: {
 <!-- <input id="field59760501" type="hidden"> -->
 
 <script type="text/javascript">
-var SelectField = Vue.extend(HcPrsMrsDepts.SelectField)
-var selectField = new SelectField({propsData: {
+var selectField = new HcPrsMrsDepts.SelectField({propsData: {
   departmentInputId: 'field59760408',
   prsEmailInputId: 'field59760500',
   mrsEmailInputId: 'field59760501'
