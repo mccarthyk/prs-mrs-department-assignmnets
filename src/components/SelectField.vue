@@ -32,10 +32,10 @@ export default {
         document.getElementById(this.departmentInputId).value = (department) ? department.name : null
       }
       if (this.prsEmailInputId) {
-        document.getElementById(this.prsEmailInputId).value = (department.prs) ? department.prs.email : null
+        document.getElementById(this.prsEmailInputId).value = (department && department.prs) ? department.prs.email : null
       }
       if (this.mrsEmailInputId) {
-        document.getElementById(this.mrsEmailInputId).value = (department.mrs) ? department.mrs.email : null
+        document.getElementById(this.mrsEmailInputId).value = (department && department.mrs) ? department.mrs.email : null
       }
     }
   },

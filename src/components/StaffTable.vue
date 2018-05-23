@@ -27,6 +27,11 @@
               {{ dept.name }}
             </li>
           </ul>
+
+          <em v-if="person.ooo" class="small">
+            <strong>Out of Office Backup:</strong>
+            {{ person.oooBackup.name }}
+          </em>
         </td>
 
         <td>

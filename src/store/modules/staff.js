@@ -20,6 +20,12 @@ export default {
   getters: {
     departmentsOf: (state, getters, rootState) => person => {
       return rootState.departments.index.filter(x => x.prsName === person.name || x.mrsName === person.name)
+    },
+    oooBackupOf: state => person => {
+      return state.index.find(x => x.name === person.oooName)
+    },
+    oooBackupFor: state => person => {
+      return state.index.find(x => x.oooName === person.name)
     }
   }
 }

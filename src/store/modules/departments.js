@@ -19,10 +19,12 @@ export default {
   },
   getters: {
     prsOf: (state, getters, rootState) => department => {
-      return rootState.staff.index.find(x => x.name === department.prsName)
+      let person = rootState.staff.index.find(x => x.name === department.prsName)
+      return (person && person.ooo) ? person.oooBackup : person
     },
     mrsOf: (state, getters, rootState) => department => {
-      return rootState.staff.index.find(x => x.name === department.mrsName)
+      let person = rootState.staff.index.find(x => x.name === department.mrsName)
+      return (person && person.ooo) ? person.oooBackup : person
     }
   }
 }
