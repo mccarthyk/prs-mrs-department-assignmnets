@@ -1,35 +1,22 @@
 {
-  "name": "prs-mrs-department-assignmnets",
-  "description": "A Vue.js project",
-  "version": "2.0.1",
-  "author": "Kevin McCarthy <mccarthyk@hcflgov.net>",
-  "license": "MIT",
-  "private": true,
-  "main": "dist/build.js",
+  "name": "hc-vite-template",
+  "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue": "^2.5.16",
-    "vuex": "^3.0.1"
+    "axios": "^0.21.1",
+    "vue": "^3.0.5"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.1.4",
-    "css-loader": "^0.28.11",
-    "file-loader": "^1.1.11",
-    "vue-loader": "^13.7.1",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.2"
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "eslint": "^7.24.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "sass": "^1.32.8",
+    "vite": "^2.1.5"
   }
 }

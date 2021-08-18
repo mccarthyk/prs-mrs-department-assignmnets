@@ -1,38 +1,34 @@
-#  Communication's PRS & MRS Department Assignments
+# Hillsborough County Communication's PRS & MRS Department Assignments
 
 > A Vue.js project
 
 ## Data
 
-The data for this project is stored in a published Google Sheet: [PRS/MRS Department Assignments](https://docs.google.com/spreadsheets/d/1vditFfu7pnz0H2RJISkwEsyzyR6dErCPdea1jUu6YHk)
+The data for this project is stored in an [Airtable Base](https://airtable.com/tbloCMQn28QJWMWWW/viwbuX67x64Du0now?blocks=hide)
 
 ## Installation
 
-### CDN (Browser)
-
 ```html
-<!-- include babel-polyfill for IE11 Promise support -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
-<!-- include polyfill for IE11 fetch support -->
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!-- sets HcPrsMrsDepts as a variable -->
-<script src="https://commbocc.github.io/prs-mrs-department-assignmnets/dist/build.js"></script>
+<!-- exposes HcPrsMrsAssignments as a window object -->
+<script src="./hc-vite-template.umd.js"></script>
 ```
 
-#### Table
+## Basic Use
+
+### Table
 
 ```html
 <div id="StaffTable"></div>
 
 <script type="text/javascript">
-var staffTable = new HcPrsMrsDepts.StaffTable({propsData: {
-  showVoip: false,
-  filter: null // 'PRS', 'MRS', or 'Manager'
-}}).$mount('#StaffTable')
+  HcPrsMrsAssignments.StaffTable({
+    // showVoip: true,
+    // filter: 'MRS', // 'PRS', 'MRS', or 'Manager'
+  }).mount('#StaffTable')
 </script>
 ```
 
-#### Dropdown Select (FormStack)
+### Dropdown Select (FormStack)
 
 ```html
 <div id="SelectField"></div>
@@ -41,54 +37,23 @@ var staffTable = new HcPrsMrsDepts.StaffTable({propsData: {
 <!-- <input id="field59760501" type="hidden"> -->
 
 <script type="text/javascript">
-var selectField = new HcPrsMrsDepts.SelectField({propsData: {
-  departmentInputId: 'field59760408',
-  prsEmailInputId: 'field59760500',
-  mrsEmailInputId: 'field59760501'
-}}).$mount('#SelectField')
-</script>
-```
-
-### NPM
-
-`npm i --save https://github.com/Commbocc/prs-mrs-department-assignmnets`
-
-Example [Single File Component](https://vuejs.org/v2/guide/single-file-components.html)
-
-```html
-<!-- App.vue -->
-<template>
-  <main>
-    <!-- table -->
-    <table is="StaffTable"></table>
-
-    <!-- select -->
-    <div is="SelectField" ...></div>
-  </main>
-</template>
-
-<script>
-import { StaffTable, SelectField } from 'prs-mrs-department-assignmnets'
-
-export default {
-  // ...
-  components: { StaffTable, SelectField }
-  // ...
-}
+  HcPrsMrsAssignments.SelectField({
+    departmentInputId: 'field59760408',
+    prsEmailInputId: 'field59760500',
+    mrsEmailInputId: 'field59760501',
+  }).mount('#SelectField')
 </script>
 ```
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
-npm install
+yarn
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload
+yarn dev
 
-# build for production with minification
-npm run build
+# build for production
+yarn build
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

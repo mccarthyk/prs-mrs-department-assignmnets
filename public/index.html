@@ -28,6 +28,20 @@
       </div>
     </section>
 
-    <script type="module" src="/src/main.js"></script>
+    <script src="./hc-vite-template.umd.js"></script>
+    <script>
+      //
+      HcPrsMrsAssignments.SelectField({
+        departmentInputId: 'field59760408',
+        prsEmailInputId: 'field59760500',
+        mrsEmailInputId: 'field59760501',
+      }).mount('#SelectField')
+
+      //
+      HcPrsMrsAssignments.StaffTable({
+        // showVoip: true,
+        // filter: 'MRS', // 'PRS', 'MRS', or 'Manager'
+      }).mount('#StaffTable')
+    </script>
   </body>
 </html>
