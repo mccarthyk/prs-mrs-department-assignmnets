@@ -62,31 +62,23 @@ export default {
     selectedDepartment() {
       return departments.data.find((x) => x.id == this.selectedDepartmentId)
     },
-    selectedDepartmentPRS() {
-      const staffId = this.selectedDepartment?.fields?.PRS[0]
-      return this.selectedDepartment?.fields?.PRS[0]
-    },
-    selectedDepartmentMRS() {
-      return departments.data.find((x) => x.id == this.selectedDepartmentId)
-    },
   },
 
   methods: {
-    detectSelection(e) {
+    detectSelection() {
       if (this.departmentInputId) {
         document.getElementById(this.departmentInputId).value =
           this.selectedDepartment?.fields?.Name || null
       }
       if (this.prsEmailInputId) {
         document.getElementById(this.prsEmailInputId).value =
-          staffMemberOfDepartment(
-            this.selectedDepartmentId,
-            'PRS'
-          )?.fields.Email
+          staffMemberOfDepartment(this.selectedDepartmentId, 'PRS')?.fields
+            ?.Email || null
       }
       if (this.mrsEmailInputId) {
         document.getElementById(this.mrsEmailInputId).value =
-          staffMemberOfDepartment(this.selectedDepartmentId, 'MRS').fields.Email
+          staffMemberOfDepartment(this.selectedDepartmentId, 'MRS')?.fields
+            ?.Email || null
       }
     },
   },
