@@ -1,19 +1,27 @@
-import Vue from 'vue'
-import store from './store'
+import { createApp } from 'vue'
+import { fetchAll } from './lib'
 
-import SF from './components/SelectField'
-import ST from './components/StaffTable'
+import SelectFieldComponent from './components/SelectField.vue'
+import StaffTableComponent from './components/StaffTable.vue'
 
-let SelectField = Vue.extend({
-  store,
-  extends: SF
-})
+fetchAll()
 
-let StaffTable = Vue.extend({
-  store,
-  extends: ST
-})
+export const SelectField = (props = {}) =>
+  createApp(SelectFieldComponent, props)
 
-store.dispatch('fetchAll')
+export const StaffTable = (props = {}) => createApp(StaffTableComponent, props)
 
-export { StaffTable, SelectField }
+if (import.meta.env.DEV) {
+  //
+  SelectField({
+    departmentInputId: 'field59760408',
+    prsEmailInputId: 'field59760500',
+    mrsEmailInputId: 'field59760501',
+  }).mount('#SelectField')
+
+  //
+  StaffTable({
+    // showVoip: true,
+    // filter: 'MRS', // 'PRS', 'MRS', or 'Manager'
+  }).mount('#StaffTable')
+}
