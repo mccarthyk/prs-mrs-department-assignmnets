@@ -1,1 +1,47 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>PRS/MRS Department Assignments</title><link rel=stylesheet href=https://commbocc.github.io/html-wrapper/static/css/app.css></head><body><div id=prs-mrs class="container my-5"><h3>FormStack Select</h3><div is=FormStackSelect department-input-id=fsdi prs-email-input-id=fspei mrs-email-input-id=fsmei></div><div class="card card-body bg-dark"><input id=fsdi readonly=readonly class="form-control form-control-sm"> <input id=fspei readonly=readonly class="form-control form-control-sm"> <input id=fsmei readonly=readonly class="form-control form-control-sm"></div><hr class=my-5><h3>Table</h3><table is=StaffTable></table></div><script type=text/javascript src=./static/js/manifest.js></script><script type=text/javascript src=./static/js/vendor.js></script><script type=text/javascript src=./static/js/app.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hillsborough County</title>
+    <link
+      rel="stylesheet"
+      href="https://commbocc.github.io/html-wrapper/static/css/app.css"
+    />
+  </head>
+  <body>
+    <section class="py-5">
+      <div class="container">
+        <div id="SelectField"></div>
+        <input id="field59760408" readonly disabled />
+        <input id="field59760500" readonly disabled />
+        <input id="field59760501" readonly disabled />
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="py-5">
+      <div class="container">
+        <div id="StaffTable"></div>
+      </div>
+    </section>
+
+    <script src="./hc-vite-template.umd.js"></script>
+    <script>
+      //
+      HcPrsMrsAssignments.SelectField({
+        departmentInputId: 'field59760408',
+        prsEmailInputId: 'field59760500',
+        mrsEmailInputId: 'field59760501',
+      }).mount('#SelectField')
+
+      //
+      HcPrsMrsAssignments.StaffTable({
+        // showVoip: true,
+        // filter: 'MRS', // 'PRS', 'MRS', or 'Manager'
+      }).mount('#StaffTable')
+    </script>
+  </body>
+</html>
