@@ -53,7 +53,7 @@ export default {
     },
     selectClass: {
       type: String,
-      default: "form-control",
+      default: "form-control iMPvJX  fsFieldSelect",
     },
     departmentInputId: {
       type: String,
