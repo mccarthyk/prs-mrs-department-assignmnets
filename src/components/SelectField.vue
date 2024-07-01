@@ -25,6 +25,7 @@
 <script>
 import { departments, staffMemberOfDepartment } from "../lib";
 
+// formstack uses react, this function is now required to have react see the changes to the input's value
 function changeValue(input, value) {
   const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
     window[input.constructor.name].prototype,
